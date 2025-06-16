@@ -1,0 +1,25 @@
+---
+
+ansible-navigator:
+  execution-environment:
+    container-engine: podman
+    container-options:
+      - "--net=host"
+      - "--env=ANSIBLE_STDOUT_CALLBACK=yaml"
+    enabled: true
+    environment-variables:
+      set:
+        ANSIBLE_CALLBACK_RESULT_FORMAT: yaml
+    image: localhost/ursi_ee:latest
+    pull:
+      policy: missing
+  logging:
+    level: debug
+    append: true
+    file: logs/ansible-navigator.log
+  playbook-artifact:
+    enable: false
+    save-as: logs/{playbook_name}-artifact-{time_stamp}.json
+
+...
+

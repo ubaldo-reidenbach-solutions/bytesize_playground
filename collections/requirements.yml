@@ -1,0 +1,12 @@
+---
+
+# ansible-galaxy collection install -r /path/to/requirements.yml
+collections:
+  - name: ansible.netcommon
+  - name: ansible.posix
+  - name: community.crypto
+  - name: community.general
+  - name: community.mysql
+  - name: ovirt.ovirt
+
+...

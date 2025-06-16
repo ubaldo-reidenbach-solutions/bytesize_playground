@@ -1,0 +1,12 @@
+collections/*
+!collections/collections.md
+!collections/requirements.yml
+inventories/*
+!inventories/inventories.md
+!inventories/example.yml
+keys/ssh/*
+!keys/ssh/ssh.md
+keys/vault/*
+!keys/vault/vault.md
+logs/*
+!logs/logs.md
