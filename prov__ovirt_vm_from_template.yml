@@ -1,0 +1,57 @@
+---
+
+- name: ovirt authentication
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: ovirt login
+      ansible.builtin.include_role:
+        name: mgmt__ovirt
+        tasks_from: login.yml
+
+- name: vm provisioning
+  hosts: "{{ nodes }}"
+  gather_facts: false
+
+  tasks:
+
+    - name: "generate password(s) for {{ ansible_ssh_user }}"
+      ansible.builtin.shell:
+        cmd: "echo '{{ ansible_become_pass }}' | mkpasswd -s -m sha512crypt"
+      register: ansible_pass
+      delegate_to: localhost
+
+    - name: "display {{ ansible_ssh_user }} password(s)"
+      ansible.builtin.debug:
+        var: ansible_pass.stdout
+        verbosity: 1
+
+    - name: provision vm
+      ansible.builtin.include_role:
+        name: mgmt__ovirt
+        tasks_from: vm_from_template.yml
+      vars:
+        ovirt_auth: "{{ hostvars['localhost']['ovirt_auth'] }}"
+
+- name: vm post provisioning
+  hosts: "{{ nodes }}"
+
+  tasks:
+
+    - name: install ovirt required packages
+      ansible.builtin.include_tasks: task__ovirt_guest_agent.yml
+
+- name: ovirt authentication
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: ovirt logout
+      ansible.builtin.include_role:
+        name: mgmt__ovirt
+        tasks_from: logout.yml
+
+...

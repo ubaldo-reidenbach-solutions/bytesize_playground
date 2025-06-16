@@ -1,0 +1,21 @@
+---
+
+- name: ensure tasks run only on selected os releases
+  block:
+
+    - name: install qemu guest agent
+      ansible.builtin.package:
+        name: qemu-guest-agent
+        state: present
+
+    - name: start qemu guest agent
+      ansible.builtin.service:
+        name: qemu-guest-agent
+        state: started
+        enabled: true
+
+  when: >
+    ansible_distribution == "RedHat" or
+    ansible_distribution == "Rocky"
+
+...
