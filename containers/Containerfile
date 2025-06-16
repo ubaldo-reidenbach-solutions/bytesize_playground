@@ -1,5 +1,5 @@
 FROM registry.fedoraproject.org/fedora:latest
 RUN dnf clean all
-RUN dnf install -y ansible-core figlet openssh-clients sshpass python3-netaddr python3-ovirt-engine-sdk4
+RUN dnf install -y ansible-core figlet mkpasswd openssh-clients sshpass python3-netaddr python3-ovirt-engine-sdk4
 RUN dnf update -y
 ADD http://www.figlet.org/fonts/nancyj.flf /usr/share/figlet/
