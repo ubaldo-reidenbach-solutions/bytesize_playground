@@ -5,6 +5,7 @@ inventories/*
 !inventories/inventories.md
 !inventories/example.yml
 keys/ssh/*
+!keys/ssh/default.pub
 !keys/ssh/ssh.md
 keys/vault/*
 !keys/vault/vault.md
