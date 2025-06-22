@@ -11,7 +11,7 @@
         name: mgmt__ovirt
         tasks_from: login.yml
 
-- name: vm provisioning
+- name: start vm provisioning
   hosts: "{{ nodes }}"
   gather_facts: false
 
@@ -35,7 +35,7 @@
       vars:
         ovirt_auth: "{{ hostvars['localhost']['ovirt_auth'] }}"
 
-- name: vm post provisioning
+- name: start vm post provisioning configuration
   hosts: "{{ nodes }}"
 
   tasks:
