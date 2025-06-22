@@ -19,3 +19,6 @@
 [submodule "roles/time_synchronization"]
 	path = roles/time_synchronization
 	url = git@github.com:chomatz/time_synchronization.git
+[submodule "roles/verbose_doodle"]
+	path = roles/verbose_doodle
+	url = git@github.com:ubaldo-reidenbach-solutions/verbose_doodle.git
