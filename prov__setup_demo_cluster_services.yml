@@ -1,6 +1,6 @@
 ---
 
-- name: setup the mariadb database server
+- name: deploy the mariadb database server
   hosts: db_hosts
 
   tasks:
@@ -8,7 +8,7 @@
     - name: ensure tasks run only on selected os releases
       block:
 
-        - name: register system to satellite
+        - name: deploy the mariadb server
           ansible.builtin.include_role:
             name: verbose_doodle
             tasks_from: db_setup.yml
