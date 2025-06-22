@@ -15,4 +15,19 @@
 
       when: ansible_distribution == "RedHat"
 
+- name: deploy the phpmyadmin application
+  hosts: web_hosts
+
+  tasks:
+
+    - name: ensure tasks run only on selected os releases
+      block:
+
+        - name: deploy the phpmyadmin webapp
+          ansible.builtin.include_role:
+            name: verbose_doodle
+            tasks_from: web_setup.yml
+
+      when: ansible_distribution == "RedHat"
+
 ...
