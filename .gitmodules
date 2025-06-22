@@ -4,3 +4,18 @@
 [submodule "roles/mgmt__rhsm"]
 	path = roles/mgmt__rhsm
 	url = git@github.com:ubaldo-reidenbach-solutions/mgmt__rhsm.git
+[submodule "roles/number_cruncher"]
+	path = roles/number_cruncher
+	url = git@github.com:chomatz/number_cruncher.git
+[submodule "roles/boot_loader"]
+	path = roles/boot_loader
+	url = git@github.com:chomatz/boot_loader.git
+[submodule "roles/remote_management"]
+	path = roles/remote_management
+	url = git@github.com:chomatz/remote_management.git
+[submodule "roles/system_information"]
+	path = roles/system_information
+	url = git@github.com:chomatz/system_information.git
+[submodule "roles/time_synchronization"]
+	path = roles/time_synchronization
+	url = git@github.com:chomatz/time_synchronization.git
