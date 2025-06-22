@@ -1,0 +1,40 @@
+---
+
+- name: generate satellite registration command
+  hosts: sven.ursi.int
+
+  tasks:
+
+    - name: ensure tasks run only on selected os releases
+      block:
+
+        - name: generate satellite registration command
+          ansible.builtin.include_role:
+            name: mgmt__rhsm
+            tasks_from: sat_preregister.yml
+
+      when: ansible_distribution == "RedHat"
+
+- name: subscribe system(s) to red hat satellite
+  hosts: "{{ nodes }}"
+
+  tasks:
+
+    - name: ensure tasks run only on selected os releases
+      block:
+
+        - name: display generated registration command
+          ansible.builtin.debug:
+            var: hostvars['sven.ursi.int']['sat_registration_command']['stdout']
+            verbosity: 1
+
+        - name: register system to satellite
+          ansible.builtin.include_role:
+            name: mgmt__rhsm
+            tasks_from: sat_register.yml
+          vars:
+            sat_registration_command: "{{ hostvars['sven.ursi.int']['sat_registration_command']['stdout'] }}"
+
+      when: ansible_distribution == "RedHat"
+
+...
