@@ -1,3 +1,6 @@
 [submodule "roles/mgmt__ovirt"]
 	path = roles/mgmt__ovirt
 	url = git@github.com:ubaldo-reidenbach-solutions/mgmt__ovirt.git
+[submodule "roles/mgmt__rhsm"]
+	path = roles/mgmt__rhsm
+	url = git@github.com:ubaldo-reidenbach-solutions/mgmt__rhsm.git
