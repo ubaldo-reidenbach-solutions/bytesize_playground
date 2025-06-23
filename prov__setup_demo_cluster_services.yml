@@ -30,19 +30,19 @@
 
       when: ansible_distribution == "RedHat"
 
-#- name: deploy the nginx load balancer
-#  hosts: lb_hosts
+- name: deploy the nginx load balancer
+  hosts: lb_hosts
 
-#  tasks:
+  tasks:
 
-#    - name: ensure tasks run only on selected os releases
-#      block:
+    - name: ensure tasks run only on selected os releases
+      block:
 
-#        - name: deploy the nginx balancer
-#          ansible.builtin.include_role:
-#            name: verbose_doodle
-#            tasks_from: lb_setup.yml
+        - name: deploy the nginx balancer
+          ansible.builtin.include_role:
+            name: verbose_doodle
+            tasks_from: lb_setup.yml
 
-#      when: ansible_distribution == "RedHat"
+      when: ansible_distribution == "RedHat"
 
 ...
